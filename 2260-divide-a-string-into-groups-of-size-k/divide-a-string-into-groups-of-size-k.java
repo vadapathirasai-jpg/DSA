@@ -2,14 +2,14 @@ class Solution {
     public String[] divideString(String s, int k, char fill) {
         int n = s.length();
         StringBuilder str = new StringBuilder();
-        if( n < k ){
-            int m = k - n;
-            str.append(s);
-            while( m-- != 0 ){
-            str.append(fill);
-            }
-            return new String[]{str.toString()};
-        }
+        // if( n < k ){
+        //     int m = k - n;
+        //     str.append(s);
+        //     while( m-- != 0 ){
+        //     str.append(fill);
+        //     }
+        //     return new String[]{str.toString()};
+        // }
         ArrayList<String> ans = new ArrayList<>();
         for(int i = 0; i < n; i++){
             str.append(s.charAt(i));
