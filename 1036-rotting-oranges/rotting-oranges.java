@@ -19,7 +19,7 @@ class Solution {
         }
         if(fresh == 0) { return 0;}
         int time = 0;
-        while( !q.isEmpty() ){
+        while( !q.isEmpty() && fresh > 0){
             //time++;
             int s = q.size();
             for(int i = 0; i < s; i++){
@@ -42,6 +42,6 @@ class Solution {
             }
             time++;
         }
-      return fresh == 0 ? time-1 : -1;
+      return fresh == 0 ? time : -1;
     }
 }
