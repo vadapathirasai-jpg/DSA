@@ -1,10 +1,13 @@
 class Solution {
     public int trailingZeroes(int n) {
         int count = 0;
-     while( n != 0 ){
-            count += n/5;
-            n = n / 5;
+        int k = 5;
+     while( k <= n ){
+            count += n/k;
+           // n = n / k;
+            k *= 5;
        }
+       //TC:O(log base 5 n);
         return count;
     }
 }
