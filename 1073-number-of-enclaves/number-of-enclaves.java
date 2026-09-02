@@ -5,9 +5,13 @@ class Solution {
         int[][] direction = {
             {1, 0}, {-1, 0}, {0, 1}, {0, -1}
         };
+        int one = 0;
         Queue<int[]> q = new LinkedList<>();
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
+                if(grid[i][j] == 1){
+                    one++;
+                }
                 if((i == 0 || j == 0 || i == m-1 || j == n-1) && grid[i][j] == 1){
                     grid[i][j] = 0;
                     q.offer(new int[]{ i , j });
@@ -20,6 +24,7 @@ class Solution {
         // }
         while( !q.isEmpty() ){
             int[] p = q.poll(); 
+            one--;
             int x = p[0];
             int y = p[1];
             for(int i = 0; i < 4; i++){
@@ -36,15 +41,15 @@ class Solution {
 
             }
         }
-        int count = 0;
-        for(int i = 0; i < m; i++){
-            for(int j = 0; j < n; j++){
-                if(grid[i][j] == 1){
-                    count++;
-                }
-            }
-        } 
-        return count;
+        // int count = 0;
+        // for(int i = 0; i < m; i++){
+        //     for(int j = 0; j < n; j++){
+        //         if(grid[i][j] == 1){
+        //             count++;
+        //         }
+        //     }
+        // } 
+        return one;
         
     }
 }
