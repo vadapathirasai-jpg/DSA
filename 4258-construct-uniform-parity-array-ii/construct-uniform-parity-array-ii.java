@@ -10,6 +10,6 @@ class Solution {
                 isAllEven = false;
             }
         }
-        return isAllEven || (min % 2) == 1;
+        return (min%2) == 1 || isAllEven;
     }
 }
