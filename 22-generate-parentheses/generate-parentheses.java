@@ -1,21 +1,25 @@
 class Solution {
-    void backtrack(int n, int open, int close, String current, List<String> ans){
+    void backtrack(int n, int open, int close, StringBuilder current, List<String> ans){
 
         if( current.length() == n*2 ){
-            ans.add(current);
+            ans.add(current.toString());
             return;
         }
         if(open < n){
-            backtrack(n, open +1, close, current + "(", ans);
+            current.append("(");
+            backtrack(n, open +1, close, current, ans);
+            current.deleteCharAt(current.length() -1);
         }
         if(close < open){
-            backtrack(n, open, close + 1, current + ")", ans);
+            current.append(")");
+            backtrack(n, open, close + 1, current, ans);
+            current.deleteCharAt(current.length() -1);
         }
 
     }
     public List<String> generateParenthesis(int n) {
         List<String> ans = new ArrayList<>();
-        backtrack(n, 0, 0, "", ans);
+        backtrack(n, 0, 0, new StringBuilder(), ans);
         return ans;
     }
 }
