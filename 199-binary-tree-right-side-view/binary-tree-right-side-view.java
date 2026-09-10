@@ -14,21 +14,22 @@
  * }
  */
 class Solution {
-    void levelOrder(TreeNode root, List<List<Integer>> ans){
-
-        if( root == null ){
-            return;
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        
+        if(root == null){
+            return ans;
         }
-
         Queue<TreeNode> q = new LinkedList<>();
         q.offer(root);
-        while ( !q.isEmpty() ){
+
+        while( !q.isEmpty() ){
             int n = q.size();
-            ArrayList<Integer> li = new ArrayList<>();
             for(int i = 0; i < n; i++){
                 TreeNode r = q.poll();
-                li.add(r.val);
-
+                if( i == n -1 ){
+                    ans.add(r.val);
+                }
                 if(r.left != null){
                     q.offer(r.left);
                 }
@@ -36,17 +37,6 @@ class Solution {
                     q.offer(r.right);
                 }
             }
-            ans.add(new ArrayList<>(li));
-        }
-
-    }
-    public List<Integer> rightSideView(TreeNode root) {
-        List<List<Integer>> list = new ArrayList<>();
-        levelOrder(root, list);
-
-        List<Integer> ans = new ArrayList<>();
-        for(List<Integer> x : list){
-            ans.add(x.get(x.size()-1));
         }
         return ans;
     }
