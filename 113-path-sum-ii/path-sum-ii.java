@@ -15,19 +15,22 @@
  */
 class Solution {
     void pathSum(TreeNode root, int target, int sum, List<List<Integer>> ans, List<Integer> curr){
+
         if(root == null){
             return;
         }
+
+        sum += root.val;
         curr.add(root.val);
+
         if(root.right == null && root.left == null){
-            if(sum + root.val == target){
-                
+            if(sum == target){
                 ans.add(new ArrayList<>(curr));
             } 
         }
         
-        pathSum(root.right, target, sum + root.val, ans, curr);
-        pathSum(root.left, target, sum + root.val, ans, curr);
+        pathSum(root.right, target, sum, ans, curr);
+        pathSum(root.left, target, sum, ans, curr);
 
         curr.remove(curr.size() -1);
     }
