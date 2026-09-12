@@ -6,6 +6,7 @@ class Solution {
                 sum += nums[i];
                 continue;
             }
+            else
             sum -= nums[i];
         }
         return sum;
