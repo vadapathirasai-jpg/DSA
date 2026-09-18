@@ -17,7 +17,7 @@ class Solution {
             return 0;
         }
             int time=0;
-            while(!q.isEmpty()){
+            while(!q.isEmpty() &&fresh>0){
                 int size=q.size();
                 for(int i=0;i<size;i++){
                      int[] a=q.poll();
@@ -38,6 +38,6 @@ class Solution {
         if(fresh>0){
             return -1;
            } 
-        return time-1;
+        return time;
     }
 }
