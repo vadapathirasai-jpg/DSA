@@ -15,19 +15,27 @@
  */
 class Solution {
     int leftHeight(TreeNode root){
-        if(root == null) return 0;
+        if(root == null){
+            return 0;
+        }
         return leftHeight(root.left) + 1;
     }
     int rightHeight(TreeNode root){
-        if(root == null) return 0;
+        if(root == null){
+            return 0;
+        }
         return rightHeight(root.right) + 1;
     }
-
     public int countNodes(TreeNode root) {
-        int lh = leftHeight(root);
-        int rh = rightHeight(root);
-        if(lh == rh) return (( 1 << lh ) - 1);
-        // int nodes = countNode(root);
+        if(root == null){
+            return 0;
+        }
+        int left = leftHeight(root);
+        int right = rightHeight(root);
+        if(left == right){
+            return (1 << left)-1;
+        }
         return countNodes(root.left) + countNodes(root.right) + 1;
+
     }
 }
